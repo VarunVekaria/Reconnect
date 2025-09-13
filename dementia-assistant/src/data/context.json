@@ -1,0 +1,16 @@
+{
+    "patient123": {
+      "name": "Arjun",
+      "preferences": { "tone": "calm and friendly", "favorite_food": "oatmeal" },
+      "caregivers": [{ "name": "Priya", "relation": "Daughter" }],
+      "home": {
+        "label": "Home",
+        "coords": { "lat": 40.785091, "lng": -73.968285 }
+      },
+      "emergencyContacts": [
+        { "name": "Priya", "relation": "Daughter", "phone": "+15551234567", "email": "priya@example.com" }
+      ],
+      "notes": "Likes short, step-by-step instructions."
+    }
+  }
+  

@@ -1,11 +1,16 @@
 "use client";
-import { cn } from "../../lib/utils";  // <-- fixed
+import React from "react";
+import { cn } from "@/lib/utils";
 
 export default function MessageBubble({
-  role,
-  children
-}: { role: "user" | "assistant"; children: React.ReactNode }) {
-  const isUser = role === "user";
+  isUser,
+  children,
+  imageUrls = [],
+}: {
+  isUser?: boolean;
+  children?: React.ReactNode;
+  imageUrls?: string[];
+}) {
   return (
     <div className={cn("flex w-full mb-3", isUser ? "justify-end" : "justify-start")}>
       <div
@@ -16,7 +21,23 @@ export default function MessageBubble({
             : "bg-gray-100 dark:bg-zinc-800 dark:text-zinc-100 rounded-bl-sm"
         )}
       >
-        {children}
+        {typeof children === "string" ? (
+          <div style={{ whiteSpace: "pre-wrap" }}>{children}</div>
+        ) : (
+          children
+        )}
+
+        {imageUrls.map((url, i) => (
+          <div key={i} className="mt-2">
+          <img
+            src={url}
+            alt="memory"
+            loading="lazy"
+            className="rounded-lg border border-gray-200 dark:border-zinc-700
+                       max-w-[300px] max-h-[300px] object-cover"
+          />
+        </div>
+        ))}
       </div>
     </div>
   );

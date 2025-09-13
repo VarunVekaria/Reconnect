@@ -298,5 +298,291 @@
       "The patient is seeking general advice about rest."
     ],
     "ts": "2025-09-13T07:00:42.277Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 4 august 2002",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-13T15:26:55.312Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/d5965a8f-ee29-4d59-835f-d63a2b60c9cd.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-13T15:28:18.076Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/d5965a8f-ee29-4d59-835f-d63a2b60c9cd.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-13T15:34:48.686Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/d5965a8f-ee29-4d59-835f-d63a2b60c9cd.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-13T15:35:23.321Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/d5965a8f-ee29-4d59-835f-d63a2b60c9cd.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-13T15:39:04.591Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "where should i go",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-13T17:43:52.483Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "Help",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient did not provide specific medical symptoms or concerns."
+    ],
+    "ts": "2025-09-13T17:44:01.660Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should i do now",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient is following up on medication instructions."
+    ],
+    "ts": "2025-09-13T17:45:41.014Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "I am not able to breath",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "breathing"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T17:47:02.554Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "Help",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "emergency",
+      "assistance needed"
+    ],
+    "reasons": [
+      "The patient is in distress and requires immediate help."
+    ],
+    "ts": "2025-09-13T17:51:34.817Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Help",
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "emergency",
+      "assistance needed"
+    ],
+    "reasons": [
+      "The patient is in distress and requires immediate help."
+    ],
+    "ts": "2025-09-13T18:29:41.338Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "help",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message is vague and does not indicate a specific medical issue."
+    ],
+    "ts": "2025-09-13T18:31:39.732Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "Where should i go now",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for medical attention."
+    ],
+    "ts": "2025-09-13T18:32:02.684Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/d5965a8f-ee29-4d59-835f-d63a2b60c9cd.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-13T18:33:05.417Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "where should i go",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-13T18:36:36.611Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "Hello, what should I do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient is following up on medication advice."
+    ],
+    "ts": "2025-09-13T18:38:42.259Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "हलो मेरा नाम वरुंड है, मैं क्या करूँ अपी",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient's message does not indicate any medical issue or concern."
+    ],
+    "ts": "2025-09-13T18:38:59.638Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "अन्साइटी फिल्स के लिए",
+    "tags": [
+      "medical"
+    ],
+    "severity": "low",
+    "categories": [
+      "mental health",
+      "anxiety"
+    ],
+    "reasons": [
+      "Patient is experiencing anxiety and may need medication or support."
+    ],
+    "ts": "2025-09-13T18:39:10.585Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i feel i have fever",
+    "tags": [
+      "medical"
+    ],
+    "severity": "moderate",
+    "categories": [
+      "fever"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T18:40:02.272Z"
   }
 ]

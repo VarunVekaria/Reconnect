@@ -1,0 +1,139 @@
+{
+  "patient123": [
+    {
+      "title": "Go Home",
+      "instructions": "Head back to your home.",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "20:00",
+      "end": "23:59",
+      "location": {
+        "label": "Home",
+        "coords": {
+          "lat": 40.785091,
+          "lng": -73.968285
+        }
+      }
+    },
+    {
+      "title": "Breakfast",
+      "instructions": "Have oatmeal and tea.",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "08:00",
+      "end": "08:30"
+    },
+    {
+      "title": "Morning walk",
+      "instructions": "10-minute walk near the garden.",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "09:30",
+      "end": "09:45",
+      "location": {
+        "label": "Garden",
+        "coords": {
+          "lat": 40.771133,
+          "lng": -73.974187
+        }
+      }
+    },
+    {
+      "title": "Anytime check-in",
+      "instructions": "Take a deep breath and sip water.",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "00:00",
+      "end": "23:59",
+      "location": {
+        "label": "Home",
+        "coords": {
+          "lat": 40.785091,
+          "lng": -73.968285
+        }
+      }
+    },
+    {
+      "title": "Have meds",
+      "instructions": "Take meds with water",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "08:00",
+      "end": "09:00",
+      "id": "an7gojqa"
+    },
+    {
+      "title": "Have dinner",
+      "instructions": "Have dinner with water",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "08:00",
+      "end": "09:00",
+      "id": "xa25y8mn"
+    },
+    {
+      "title": "Take ABCD pill",
+      "instructions": "",
+      "dow": [
+        6,
+        7
+      ],
+      "start": "13:00",
+      "end": "14:00",
+      "id": "a7mi4pnm"
+    },
+    {
+      "title": "Meds for anxiety",
+      "instructions": "",
+      "dow": [
+        6,
+        7
+      ],
+      "start": "08:00",
+      "end": "16:45",
+      "id": "zudxocxq"
+    }
+  ]
+}

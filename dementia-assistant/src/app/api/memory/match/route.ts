@@ -44,15 +44,21 @@ export async function POST(req: NextRequest) {
 
       const top = scored[0];
       const confidence = Number(top.score.toFixed(3));
-      const likely = confidence >= 0.7; // You may tune threshold
+      const likely = confidence >= 0.5; // You may tune threshold
       // console.log(top);
       const i = top.item;
       const name = i.people?.[0]?.name || i.name || "Someone";
       const relation = i.people?.[0]?.relation || "relative";
 
-      const answer = likely
-        ? `This is ${name}, your ${relation}.`
-        : `Not sure, but this might be ${name}.`;
+      let answer: string;
+      if (confidence > 0.5) {
+        answer = `This is ${name}, your ${relation}.`;
+      } else if (confidence > 0.4) {
+        answer = `This might be ${name}, your ${relation}.`;
+      } else {
+        answer = `This is an unknown person.`;
+      }
+
 
       return NextResponse.json({
         answer,
@@ -60,7 +66,7 @@ export async function POST(req: NextRequest) {
         best: {
           id: i.id,
           name: i.name,
-          relation: i.relation,
+          relation: relation,
           storagePath: i.storagePath,
         }
       });
@@ -98,7 +104,7 @@ export async function POST(req: NextRequest) {
     const confidence = Number(top.score.toFixed(3));
 
     // Basic thresholding — tune as you collect data
-    const likely = confidence >= 0.78;
+    const likely = confidence >= 0.50;
 
     // Compose a friendly, compact answer
     const i = top.item;

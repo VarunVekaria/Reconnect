@@ -1,0 +1,278 @@
+[
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "where should i go now",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "ts": "2025-09-10T21:32:42.142Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "where should i go now",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "ts": "2025-09-10T21:32:44.741Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "i am not feeling well. What should i do",
+    "ts": "2025-09-10T21:51:09.983Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "i am not feeling well. What should i do",
+    "ts": "2025-09-10T21:51:13.246Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "what music should i listen to",
+    "ts": "2025-09-10T21:51:30.011Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "what music should i listen to",
+    "ts": "2025-09-10T21:51:32.570Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should I do now?",
+    "ts": "2025-09-10T23:15:09.689Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "Hey, this is Varun. I don't know what to do right now. I'm lost.",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "ts": "2025-09-10T23:25:57.566Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "میرا نام ورن ہے مجھے پتہ نہیں چل رہا میں کدھر ہو",
+    "ts": "2025-09-10T23:29:23.853Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "O0o Woodla",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "ts": "2025-09-10T23:30:34.858Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "मेरा नाम वरुन है",
+    "ts": "2025-09-10T23:31:20.975Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "مجھے پتہ نہیں میں کدھر ہوں",
+    "ts": "2025-09-10T23:31:45.665Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "آپ میرے لئے کیا کر سکتے ہو؟",
+    "ts": "2025-09-10T23:32:30.036Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "میرا نام ورن ہے آپ کا نام کیا ہے",
+    "ts": "2025-09-10T23:33:01.724Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "मेरा नाम प्रणका है",
+    "ts": "2025-09-10T23:33:39.462Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "मैं खो गई हूँ क्या करूँ मैं",
+    "ts": "2025-09-10T23:33:53.823Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "मुझे पता नहीं, मैं अभी क्या करूँ, मैं क्या करूँ?",
+    "ts": "2025-09-10T23:34:09.952Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "مجھے پتہ نہیں میں کیا کروں میں کھو گیا ہوں",
+    "ts": "2025-09-10T23:35:05.075Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "मारु नाम बरुन जेर।",
+    "ts": "2025-09-10T23:35:41.939Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "मारू ना मारू जयू मुछू करू मने समधद पढ़ती के मुछू करू",
+    "ts": "2025-09-10T23:36:02.856Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what should i do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or urgency."
+    ],
+    "ts": "2025-09-13T04:09:49.839Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "I am having hard time breathing",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "breathing"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T04:10:05.325Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i feel i am getting a fever",
+    "tags": [
+      "medical"
+    ],
+    "severity": "moderate",
+    "categories": [
+      "fever"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T04:10:25.427Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what should i do now",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or urgency."
+    ],
+    "ts": "2025-09-13T04:14:30.850Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "i am having hard time breathing",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "breathing"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T04:14:39.806Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i feel i have fever",
+    "tags": [
+      "medical"
+    ],
+    "severity": "moderate",
+    "categories": [
+      "fever"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-13T04:14:56.462Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i am having trouble sleeping",
+    "tags": [],
+    "severity": "low",
+    "categories": [
+      "sleep issues"
+    ],
+    "reasons": [
+      "The patient is experiencing trouble sleeping, which is a common issue and does not indicate an immediate medical concern."
+    ],
+    "ts": "2025-09-13T04:24:09.091Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "yes",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient's response does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-13T04:24:18.757Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i feel a bit nauseous",
+    "tags": [],
+    "severity": "low",
+    "categories": [
+      "nausea"
+    ],
+    "reasons": [
+      "The patient reports feeling a bit nauseous, which is not an urgent medical issue."
+    ],
+    "ts": "2025-09-13T04:25:40.134Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "i feel tired",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Feeling tired can be a common experience and may not indicate a medical issue."
+    ],
+    "ts": "2025-09-13T04:27:33.027Z"
+  }
+]

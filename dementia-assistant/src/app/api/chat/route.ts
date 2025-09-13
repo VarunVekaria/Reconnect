@@ -7,6 +7,7 @@ import {
   retrieveContext,
   getNavigationTarget,
   sendEmergencyAlert,
+  getMemoriesByDate,
 } from "@/lib/tools";
 import type { ChatMessage } from "@/lib/types";
 import { triageMedical } from "@/lib/triage";  // <-- NEW
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest) {
   const safePid = patientId; // never trust model-provided IDs
   const base = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-  // ---- Tools schema (no patientId in params; we supply it server-side) ----
+  // ---- Tools schema (note: we ignore any model-provided patientId at execution time) ----
   const tools: any = [
     {
       type: "function",
@@ -101,6 +102,24 @@ export async function POST(req: NextRequest) {
         },
       },
     },
+    {
+      type: "function",
+      function: {
+        name: "getMemoriesByDate",
+        description:
+          "Fetch memory-book photos and details for a given date phrase (e.g., 'today', '7 june', '2024-06-07').",
+        parameters: {
+          type: "object",
+          properties: {
+            // We ignore model-provided patientId in execution and use the authenticated/safe one
+            patientId: { type: "string" },
+            dateQuery: { type: "string", description: "Natural or explicit date text" },
+          },
+          required: ["patientId"],
+          additionalProperties: false,
+        },
+      },
+    },
   ];
 
   // ---- Round 1: allow the model to choose a tool ----
@@ -136,17 +155,54 @@ export async function POST(req: NextRequest) {
     // ---- Execute tool (always use safePid) ----
     if (fn === "getCurrentSchedule") {
       toolResult = await getCurrentSchedule(safePid);
+
     } else if (fn === "retrieveContext") {
       toolResult = await retrieveContext(safePid);
+
     } else if (fn === "getNavigationTarget") {
       toolResult = await getNavigationTarget(safePid);
       if (toolResult?.mapUrl) meta = { mapUrl: toolResult.mapUrl, label: toolResult.label };
+
     } else if (fn === "sendEmergencyAlert") {
       toolResult = await sendEmergencyAlert(safePid, args.location);
       meta = {
         emergencyNotified: !!toolResult?.notified,
         contactsCount: toolResult?.contactsCount ?? 0,
       };
+
+    } else if (fn === "getMemoriesByDate") {
+      const dateQuery = (args?.dateQuery as string) || undefined;
+      const results = await getMemoriesByDate(safePid, dateQuery);
+
+      if (Array.isArray(results) && results.length) {
+        const top = results[0];
+        const people = (top.people || [])
+          .map((p: any) => (p.relation ? `${p.name} (${p.relation})` : p.name))
+          .join(", ");
+
+        toolResult = {
+          ok: true,
+          results,
+          summary:
+            `${top.event || "Memory"} on ${top.eventDate}` +
+            (top.place ? ` at ${top.place}` : "") +
+            (people ? ` — with ${people}` : ""),
+        };
+
+        // Provide image hint via meta; UI can render it (IMG: ...)
+        const sanitizeUrl = (u?: string) => {
+            if (!u) return undefined;
+            let x = u.trim().replace(/^sandbox:/i, "").replace(/^file:\/\//i, "");
+            if (x.startsWith("http://") || x.startsWith("https://") || x.startsWith("/")) return x;
+            if (x.startsWith("memory/")) return `/${x}`;
+            return `/${x}`;
+          };
+          meta = { imageUrl: sanitizeUrl(top.storagePath) };
+          
+      } else {
+        toolResult = { ok: false, results: [], summary: "No memories found for that date." };
+      }
+
     } else {
       toolResult = { error: `Unknown tool: ${fn}` };
     }
@@ -171,10 +227,19 @@ export async function POST(req: NextRequest) {
       messages: chatMessagesRound2 as any,
     });
 
+    // Optionally append an IMG marker so the chat UI can render the image
+    let finalMessage = second.choices[0].message;
+    if (meta?.imageUrl) {
+      finalMessage = {
+        ...finalMessage,
+        content: ((finalMessage.content as string) || "") + `\n\nIMG: ${meta.imageUrl}`,
+      } as any;
+    }
+
     // ---- TRIAGE + logging (tool / nav / emergency) ----
     try {
       const lastUserText = messages[messages.length - 1]?.content ?? "";
-      const assistantText = second.choices[0].message.content ?? "";
+      const assistantText = (finalMessage.content as string) ?? "";
       const triage = await triageMedical(lastUserText, assistantText);
 
       const tags = triage.isMedical ? ["medical"] : [];
@@ -190,13 +255,18 @@ export async function POST(req: NextRequest) {
           type: meta?.mapUrl ? "nav" : meta?.emergencyNotified ? "emergency" : "tool",
           text: lastUserText,
           meta,
-          // NEW fields
-          tags, severity, categories, reasons,
+          // triage fields
+          tags,
+          severity,
+          categories,
+          reasons,
         }),
       });
-    } catch {}
+    } catch {
+      // non-fatal
+    }
 
-    return NextResponse.json({ message: second.choices[0].message, meta });
+    return NextResponse.json({ message: finalMessage, meta });
   }
 
   // ---- No tool needed: TRIAGE + log as plain chat ----
@@ -217,11 +287,16 @@ export async function POST(req: NextRequest) {
         patientId,
         type: "chat",
         text: lastUserText,
-        // NEW fields
-        tags, severity, categories, reasons,
+        // triage fields
+        tags,
+        severity,
+        categories,
+        reasons,
       }),
     });
-  } catch {}
+  } catch {
+    // non-fatal
+  }
 
   return NextResponse.json({ message: m });
 }

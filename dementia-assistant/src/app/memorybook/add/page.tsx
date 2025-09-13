@@ -17,18 +17,18 @@ export default function AddMemoryPage() {
   const [eventDate, setEventDate] = useState("");
   const [place, setPlace] = useState("");
   const [numPeople, setNumPeople] = useState(0);
-  const [peopleFields, setPeopleFields] = useState<{ name: string; relation: string }[]>([]);
+  const [peopleFields, setPeopleFields] = useState<{ name: string; relation: string; contactNumber: string }[]>([]);
 
   function handleNumPeopleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = Math.max(0, parseInt(e.target.value, 10) || 0);
     setNumPeople(val);
     setPeopleFields(prev =>
-      Array.from({ length: val }, (_, i) => prev[i] || { name: "", relation: "" })
-    );
+  Array.from({ length: val }, (_, i) => prev[i] || { name: "", relation: "", contactNumber: "" })
+);
   }
-  function handlePersonChange(idx: number, field: "name" | "relation", value: string) {
-    setPeopleFields(prev => prev.map((p, i) => i === idx ? { ...p, [field]: value } : p));
-  }
+  function handlePersonChange(idx: number, field: "name" | "relation" | "contactNumber", value: string) {
+  setPeopleFields(prev => prev.map((p, i) => i === idx ? { ...p, [field]: value } : p));
+}
 
   async function onUpload(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,9 +50,9 @@ export default function AddMemoryPage() {
       // Add memory with peopleFields
       fd.set("type", "memory");
       if (peopleFields.length > 0) {
-        const filtered = peopleFields.filter(p => p.name.trim() !== "");
-        fd.set("people", JSON.stringify(filtered));
-      } else {
+  const filtered = peopleFields.filter(p => p.name.trim() !== "");
+  fd.set("people", JSON.stringify(filtered));
+} else {
         fd.delete("people");
       }
       // Event/date/place already in form
@@ -154,24 +154,32 @@ export default function AddMemoryPage() {
               />
             </div>
             {peopleFields.map((person, i) => (
-              <div key={i} className="flex gap-2 mb-1">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  value={person.name}
-                  onChange={e => handlePersonChange(i, "name", e.target.value)}
-                  className="border rounded px-2 py-1 text-sm"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Relation (optional)"
-                  value={person.relation}
-                  onChange={e => handlePersonChange(i, "relation", e.target.value)}
-                  className="border rounded px-2 py-1 text-sm"
-                />
-              </div>
-            ))}
+          <div key={i} className="flex gap-2 mb-1">
+            <input
+              type="text"
+              placeholder="Name"
+              value={person.name}
+              onChange={e => handlePersonChange(i, "name", e.target.value)}
+              className="border rounded px-2 py-1 text-sm"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Relation (optional)"
+              value={person.relation}
+              onChange={e => handlePersonChange(i, "relation", e.target.value)}
+              className="border rounded px-2 py-1 text-sm"
+            />
+            <input
+              type="tel"
+              placeholder="Contact Number (optional)"
+              value={person.contactNumber}
+              onChange={e => handlePersonChange(i, "contactNumber", e.target.value)}
+              className="border rounded px-2 py-1 text-sm"
+            />
+          </div>
+        ))}
+
           </div>
         )}
 

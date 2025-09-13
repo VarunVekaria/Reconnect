@@ -79,17 +79,6 @@
       "id": "an7gojqa"
     },
     {
-      "title": "Take ABCD pill",
-      "instructions": "",
-      "dow": [
-        6,
-        7
-      ],
-      "start": "13:00",
-      "end": "14:00",
-      "id": "a7mi4pnm"
-    },
-    {
       "title": "Meds for anxiety",
       "instructions": "",
       "dow": [

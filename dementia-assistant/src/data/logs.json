@@ -298,6 +298,8 @@
       "The patient is seeking general advice about rest."
     ],
     "ts": "2025-09-13T07:00:42.277Z"
+<<<<<<< HEAD
+=======
   },
   {
     "patientId": "patient123",
@@ -584,5 +586,6 @@
     ],
     "reasons": "Matched medical keywords",
     "ts": "2025-09-13T18:40:02.272Z"
+>>>>>>> 611f780038d2dd9ac1e0bf78f8bdadd9557a9962
   }
 ]

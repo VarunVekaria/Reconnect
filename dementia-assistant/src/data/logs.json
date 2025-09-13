@@ -274,5 +274,29 @@
       "Feeling tired can be a common experience and may not indicate a medical issue."
     ],
     "ts": "2025-09-13T04:27:33.027Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should i do now",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical issue or concern."
+    ],
+    "ts": "2025-09-13T06:58:46.952Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should i do now",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient is seeking general advice about rest."
+    ],
+    "ts": "2025-09-13T07:00:42.277Z"
   }
 ]

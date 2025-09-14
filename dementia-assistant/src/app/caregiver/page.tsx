@@ -3,6 +3,7 @@
 import Tabs from "@/components/common/tabs";
 import ScheduleEditor from "@/components/caregiver/ScheduleEditor";
 import LogsPanel from "@/components/caregiver/LogsPanel";
+import AddMemoryPage from "@/components/caregiver/page";
 
 export default function CaregiverPage() {
   const patientId = "patient123";
@@ -23,6 +24,11 @@ export default function CaregiverPage() {
             key: "logs",
             label: "Logs",
             content: <LogsPanel patientId={patientId} />
+          },
+          {
+            key: "gallery",
+            label: "Gallery",
+            content: <AddMemoryPage/>
           }
         ]}
       />

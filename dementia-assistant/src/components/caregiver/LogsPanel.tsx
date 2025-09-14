@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type LogEntry = {
   ts: string;
@@ -8,7 +8,7 @@ type LogEntry = {
   text?: string;
   meta?: any;
 
-  // NEW optional fields for medical tagging
+  // optional medical tagging
   tags?: string[];
   severity?: "low" | "moderate" | "urgent";
   categories?: string[];
@@ -17,13 +17,14 @@ type LogEntry = {
 
 export default function LogsPanel({
   patientId,
-  medicalOnly = false, // <-- NEW
+  medicalOnly = false,
 }: {
   patientId: string;
   medicalOnly?: boolean;
 }) {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [loading, setLoading] = useState(false);
+  const [q, setQ] = useState(""); // tiny client-side search
 
   async function load() {
     setLoading(true);
@@ -39,91 +40,172 @@ export default function LogsPanel({
 
   useEffect(() => {
     load();
-    // re-load when patient or filter changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [patientId, medicalOnly]);
 
+  // ---- UI helpers ----------------------------------------------------------
   const chipForSeverity = (sev?: LogEntry["severity"]) => {
     const s = sev ?? "low";
-    const base = "px-2 py-0.5 text-[10px] rounded";
-    if (s === "urgent") return `${base} bg-red-100 text-red-700`;
-    if (s === "moderate") return `${base} bg-yellow-100 text-yellow-700`;
-    return `${base} bg-blue-100 text-blue-700`;
+    const base =
+      "inline-flex items-center gap-1 px-2 py-0.5 text-[10px] rounded-full border";
+    if (s === "urgent")
+      return `${base} bg-red-50 text-red-700 border-red-200`;
+    if (s === "moderate")
+      return `${base} bg-amber-50 text-amber-700 border-amber-200`;
+    return `${base} bg-blue-50 text-blue-700 border-blue-200`;
   };
 
+  const iconForType = (t: LogEntry["type"]) => {
+    if (t === "emergency")
+      return (
+        <span className="text-red-600" title="Emergency">
+          ⚠️
+        </span>
+      );
+    if (t === "nav")
+      return (
+        <span className="text-blue-600" title="Navigation">
+          🗺️
+        </span>
+      );
+    if (t === "tool")
+      return (
+        <span className="text-purple-600" title="Tool">
+          🧩
+        </span>
+      );
+    return (
+      <span className="text-gray-600" title="Chat">
+        💬
+      </span>
+    );
+  };
+
+  const filtered = useMemo(() => {
+    if (!q.trim()) return logs;
+    const needle = q.toLowerCase();
+    return logs.filter((l) =>
+      [
+        l.text ?? "",
+        ...(l.categories ?? []),
+        l.reasons ?? "",
+        l.type,
+        l.severity ?? "",
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(needle)
+    );
+  }, [logs, q]);
+
   return (
-    <section>
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold mb-3">
+    <section className="space-y-3">
+      {/* Toolbar */}
+      <div className="sticky top-0 z-10 -mx-4 px-4 py-2 bg-white/90 dark:bg-zinc-900/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 flex items-center gap-2 border-b">
+        <h2 className="text-base font-semibold flex-1">
           {medicalOnly ? "Medical Logs" : "Patient Logs"}
         </h2>
-        <button onClick={load} className="rounded border px-3 py-1 text-sm">
-          Refresh
-        </button>
+        <div className="flex items-center gap-2">
+          <input
+            className="rounded-lg border px-2 py-1 text-sm bg-white dark:bg-zinc-900 w-48"
+            placeholder="Search text or tags…"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+          <button
+            onClick={load}
+            className="rounded-lg border px-3 py-1 text-sm hover:bg-gray-50 dark:hover:bg-zinc-800"
+          >
+            Refresh
+          </button>
+        </div>
       </div>
 
-      <div className="rounded-lg border divide-y">
-        {loading && <div className="p-3 text-sm text-gray-500">Loading…</div>}
-        {!loading && logs.length === 0 && (
-          <div className="p-3 text-sm text-gray-500">No logs yet.</div>
+      {/* List */}
+      <div className="space-y-3">
+        {loading && (
+          <div className="rounded-xl border p-4 text-sm text-gray-500">
+            Loading…
+          </div>
         )}
 
-        {logs.map((l, i) => (
-          <div key={i} className="p-3 text-sm">
-            {/* Top row: time + badges */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <div className="text-xs text-gray-500">
-                {new Date(l.ts).toLocaleString()}
-              </div>
-
-              {/* Always show type pill */}
-              <span className="px-2 py-0.5 text-[10px] rounded bg-gray-100">
-                {l.type}
-              </span>
-
-              {/* Medical severity pill when applicable */}
-              {l.tags?.includes("medical") && (
-                <span className={chipForSeverity(l.severity)}>
-                  {l.severity || "low"} medical
-                </span>
-              )}
-
-              {/* Optional categories */}
-              {Array.isArray(l.categories) && l.categories.length > 0 && (
-                <span className="text-[10px] text-gray-500">
-                  [{l.categories.join(", ")}]
-                </span>
-              )}
-            </div>
-
-            {/* Main line: text */}
-            <div className="mt-1">{l.text}</div>
-
-            {/* Optional reasons/explanation */}
-            {l.reasons && (
-              <div className="text-xs text-gray-500 mt-1">{l.reasons}</div>
-            )}
-
-            {/* Existing meta rendering */}
-            {l.meta?.mapUrl && (
-              <div className="text-xs mt-1">
-                Map:{" "}
-                <a
-                  className="text-blue-600 underline"
-                  href={l.meta.mapUrl}
-                  target="_blank"
-                >
-                  Open
-                </a>
-              </div>
-            )}
-            {l.meta?.emergencyNotified && (
-              <div className="text-xs mt-1 text-red-600">
-                Emergency notified ({l.meta.contactsCount})
-              </div>
-            )}
+        {!loading && filtered.length === 0 && (
+          <div className="rounded-xl border p-4 text-sm text-gray-500">
+            No {medicalOnly ? "medical " : ""}logs found.
           </div>
-        ))}
+        )}
+
+        {filtered.map((l, i) => {
+          const isMedical = l.tags?.includes("medical");
+          return (
+            <article
+              key={i}
+              className="rounded-xl border bg-white dark:bg-zinc-900 p-4 shadow-sm hover:shadow-md transition-shadow"
+            >
+              {/* header row */}
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <span className="inline-flex items-center gap-1">
+                    {iconForType(l.type)}
+                    <span className="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-200">
+                      {l.type}
+                    </span>
+                  </span>
+                  <span>•</span>
+                  <time dateTime={l.ts}>
+                    {new Date(l.ts).toLocaleString()}
+                  </time>
+                </div>
+
+                <div className="flex items-center gap-1">
+                  {isMedical && (
+                    <span className={chipForSeverity(l.severity)}>
+                      {l.severity ?? "low"} medical
+                    </span>
+                  )}
+                  {Array.isArray(l.categories) &&
+                    l.categories.map((c) => (
+                      <span
+                        key={c}
+                        className="px-2 py-0.5 text-[10px] rounded-full bg-gray-50 border text-gray-700"
+                      >
+                        {c}
+                      </span>
+                    ))}
+                </div>
+              </div>
+
+              {/* body */}
+              {l.text && (
+                <p className="mt-2 text-sm leading-relaxed">{l.text}</p>
+              )}
+
+              {l.reasons && (
+                <p className="mt-1 text-xs text-gray-500">{l.reasons}</p>
+              )}
+
+              {/* meta row */}
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                {l.meta?.mapUrl && (
+                  <a
+                    className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+                    href={l.meta.mapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    🗺️ Open map
+                  </a>
+                )}
+                {l.meta?.emergencyNotified && (
+                  <span className="inline-flex items-center gap-1 text-red-600">
+                    🚑 Emergency notified{" "}
+                    <strong>({l.meta.contactsCount})</strong>
+                  </span>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -78,3 +78,15 @@ export async function saveUploadedAudio(file: File, fileName: string) {
   await fs.writeFile(full, buf);
   return "/voice-notes/" + fileName;
 }
+
+
+// --- add these exports in src/lib/notify.ts ---
+export type { VoiceNote }; // so API/clients can import the type
+
+export async function listVoiceNotesByPatient(patientId: string): Promise<VoiceNote[]> {
+  const db = await readJSON<VoiceDB>(VOICE_FILE, {});
+  return Object
+    .values(db)
+    .filter(v => v.patientId === patientId)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+}

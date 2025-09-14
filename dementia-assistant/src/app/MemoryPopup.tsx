@@ -1,5 +1,6 @@
+// src/app/MemoryPopup.tsx
 "use client";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 type WaInvite = {
   name: string;
@@ -7,14 +8,47 @@ type WaInvite = {
   phone: string;
   waLink: string;
   token: string;
-  expiresAt: string;
+  expiresAt?: string;
 };
 
-export default function MemoryPopup({ memory }: { memory?: any }) {
+type Memory = {
+  id?: string;
+  storagePath?: string;
+  event?: string;
+  eventDate?: string;
+  people?: Array<{ name?: string; relation?: string }>;
+};
+
+export default function MemoryPopup({ memory }: { memory?: Memory }) {
   const [invites, setInvites] = useState<WaInvite[] | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function buildWaLinks() {
+  const storagePath = useMemo(
+    () => (memory?.storagePath && typeof memory.storagePath === "string" ? memory.storagePath : "/placeholder.png"),
+    [memory?.storagePath]
+  );
+
+  const title = useMemo(() => {
+    const event = typeof memory?.event === "string" && memory.event.trim() ? memory.event.trim() : "Memory";
+    const date  = typeof memory?.eventDate === "string" && memory.eventDate.trim() ? ` • ${memory.eventDate}` : "";
+    return `${event}${date}`;
+  }, [memory?.event, memory?.eventDate]);
+
+  const peopleText = useMemo(() => {
+    const list = Array.isArray(memory?.people) ? memory!.people! : [];
+    if (!list.length) return "—";
+    return list
+      .map((p) => {
+        const name = (p?.name ?? "").toString().trim();
+        const rel  = (p?.relation ?? "").toString().trim();
+        if (!name) return null;
+        return rel ? `${name} (${rel})` : name;
+      })
+      .filter(Boolean)
+      .join(", ");
+  }, [memory?.people]);
+
+  const buildWaLinks = useCallback(async () => {
     if (!memory?.id) return;
     setLoading(true);
     try {
@@ -23,91 +57,93 @@ export default function MemoryPopup({ memory }: { memory?: any }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ memoryId: memory.id }),
       });
-      const j = await r.json();
-      if (!r.ok) throw new Error(j?.error || "Failed to prepare WhatsApp links");
-      setInvites(j.links || []);
+      const ct = r.headers.get("content-type") || "";
+      const j = ct.includes("application/json") ? await r.json() : {};
+      if (!r.ok) throw new Error((j as any)?.error || `Failed (${r.status})`);
+      setInvites(Array.isArray((j as any).links) ? (j as any).links : []);
     } catch (e) {
-      console.error(e);
+      console.error("Invite error:", e);
       setInvites([]);
     } finally {
       setLoading(false);
     }
-  }
+  }, [memory?.id]);
 
-  // Handle "no memory yet"
-  if (!memory) {
+  // Graceful "no memory" box that will NOT block siblings
+  if (!memory?.id) {
     return (
-      <div className="rounded-xl border p-4 text-sm text-gray-600">
+      <div className="rounded-xl border p-4 text-sm text-gray-600 bg-white/60">
         No memory selected yet.
       </div>
     );
   }
 
-  const storagePath = memory?.storagePath || "/placeholder.png";
-  const title =
-    (memory?.event ?? "Memory") +
-    (memory?.eventDate ? ` • ${memory.eventDate}` : "");
-  const people =
-    (memory?.people ?? [])
-      .map((p: any) => (p?.relation ? `${p.name} (${p.relation})` : p?.name))
-      .filter(Boolean)
-      .join(", ") || "—";
-
   return (
-    <div className="rounded-xl border p-4">
-      {/* image + details */}
-      <img
-        src={storagePath}
-        alt={memory?.event || "Memory"}
-        className="max-w-[320px] max-h-[320px] object-cover rounded-lg border"
-      />
+    <section className="rounded-xl border p-4 bg-white/60 space-y-3">
+      {/* Image + details */}
+      <div className="flex items-start gap-3">
+        <img
+          src={storagePath}
+          alt={memory?.event || "Memory"}
+          className="block w-[320px] h-[320px] object-cover rounded-lg border flex-shrink-0"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = "/placeholder.png";
+          }}
+        />
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-medium">{title}</div>
+          <div className="text-sm opacity-70 break-words">{peopleText}</div>
 
-      <div className="mt-2 text-sm">
-        <div className="font-medium">{title}</div>
-        <div className="opacity-70">{people}</div>
+          <button
+            onClick={buildWaLinks}
+            disabled={loading}
+            className="mt-3 px-3 py-2 rounded bg-emerald-600 text-white text-sm disabled:opacity-50"
+            type="button"
+          >
+            {loading ? "Preparing…" : "Invite via WhatsApp"}
+          </button>
+        </div>
       </div>
 
-      {/* Build links */}
-      <button
-        onClick={buildWaLinks}
-        disabled={loading}
-        className="mt-3 px-3 py-2 rounded bg-emerald-600 text-white text-sm disabled:opacity-50"
-      >
-        {loading ? "Preparing…" : "Invite via WhatsApp"}
-      </button>
-
-      {/* Render wa.me buttons */}
-      {invites && (
-        <div className="mt-3 space-y-2">
+      {/* Render wa.me buttons (never throws if fields are missing) */}
+      {Array.isArray(invites) && (
+        <div className="mt-2 space-y-2">
           {invites.length === 0 && (
             <div className="text-xs text-gray-600">No valid phone numbers.</div>
           )}
-          {invites.map((i) => (
-            <div
-              key={i.token}
-              className="flex items-center justify-between gap-2"
-            >
-              <div className="text-sm">
-                <div className="font-medium">
-                  {i.name}
-                  {i.relation ? ` (${i.relation})` : ""}
+          {invites.map((i, idx) => {
+            const exp =
+              i?.expiresAt && !Number.isNaN(new Date(i.expiresAt).getTime())
+                ? new Date(i.expiresAt).toLocaleString()
+                : null;
+            const label =
+              [i?.name?.trim(), i?.relation?.trim() ? `(${i.relation!.trim()})` : ""]
+                .filter(Boolean)
+                .join(" ");
+
+            return (
+              <div key={i?.token || `invite-${idx}`} className="flex items-center justify-between gap-2">
+                <div className="text-sm">
+                  <div className="font-medium">{label || "Contact"}</div>
+                  {exp && <div className="text-xs opacity-70">expires {exp}</div>}
                 </div>
-                <div className="text-xs opacity-70">
-                  expires {new Date(i.expiresAt).toLocaleString()}
-                </div>
+                {i?.waLink ? (
+                  <a
+                    href={i.waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 rounded bg-green-600 text-white text-xs"
+                  >
+                    Open WhatsApp
+                  </a>
+                ) : (
+                  <span className="text-xs text-gray-500">No link</span>
+                )}
               </div>
-              <a
-                href={i.waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded bg-green-600 text-white text-xs"
-              >
-                Open WhatsApp
-              </a>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
-    </div>
+    </section>
   );
 }

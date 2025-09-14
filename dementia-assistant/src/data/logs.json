@@ -241,5 +241,17 @@
     "categories": [],
     "reasons": [],
     "ts": "2025-09-14T08:44:38.139Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should I do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "General inquiry about breakfast"
+    ],
+    "ts": "2025-09-14T09:09:19.432Z"
   }
 ]

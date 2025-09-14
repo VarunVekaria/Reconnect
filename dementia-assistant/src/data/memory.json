@@ -24413,7 +24413,8 @@
       "type": "person",
       "name": "",
       "relation": ""
-=======
+    },
+    {
       "id": "32f8c3b7-dc74-4e45-b96e-dbbfb432f2b2",
       "patientId": "patient123",
       "storagePath": "/memory/32f8c3b7-dc74-4e45-b96e-dbbfb432f2b2.jpeg",

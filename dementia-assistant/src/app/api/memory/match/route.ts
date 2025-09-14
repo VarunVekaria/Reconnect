@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         confidence,
         best: {
           id: i.id,
-          name: i.name,
+          name: name,
           relation: relation,
           storagePath: i.storagePath,
         }

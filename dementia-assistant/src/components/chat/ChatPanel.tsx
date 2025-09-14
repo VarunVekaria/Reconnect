@@ -10,7 +10,7 @@ const QUICK_PROMPTS = [
   "What should I do now?",
   "Where should I go?",
   "I need help",
-  "What happened on this day?",
+  
 ];
 
 // --- helpers to parse/sanitize image refs coming from the model ---
@@ -136,6 +136,7 @@ export default function ChatPanel({
     <div className="mx-auto max-w-4xl px-4 pb-28 pt-6">
       {/* Header */}
       <header className="mb-4">
+        <br></br>
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-900 text-white text-sm">AI</div>
           <div>
@@ -164,7 +165,7 @@ export default function ChatPanel({
       {/* Chat canvas and composer share the same max width */}
       <div className="relative">
         {/* Chat window */}
-        <div className="h-[68vh] overflow-y-auto rounded-2xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
+        <div className="h-[52vh] overflow-y-auto rounded-2xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
           {messages.map((m, i) => {
             const { text, images } = parseContentForImages(m.content);
             return (

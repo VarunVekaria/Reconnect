@@ -21,6 +21,8 @@ export default function CaregiverPage() {
 
   return (
     <div className="space-y-6">
+      <br></br>
+      <br></br>
       <h1 className="text-2xl font-semibold">Caregiver Mode</h1>
       <Tabs
         defaultTab="schedule"

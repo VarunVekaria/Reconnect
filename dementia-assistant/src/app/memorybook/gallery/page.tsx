@@ -36,7 +36,7 @@ export default function GalleryPage() {
 
       {/* People Section */}
       <section>
-        <h3 className="text-lg font-semibold mb-2">Photos of People</h3>
+        <h3 className="text-lg font-semibold mb-2">People you can trust</h3>
         {!peoplePhotos.length && (
           <p className="text-sm text-gray-500">No photos of people yet. Add some in the “Add a person” section.</p>
         )}
@@ -56,7 +56,7 @@ export default function GalleryPage() {
 
       {/* Memories Section */}
       <section>
-        <h3 className="text-lg font-semibold mb-2 mt-8">Photos of Memories</h3>
+        <h3 className="text-lg font-semibold mb-2 mt-8">Memories you've made</h3>
         {!memoryPhotos.length && (
           <p className="text-sm text-gray-500">No memory photos yet. Add some in the “Add a memory” section.</p>
         )}

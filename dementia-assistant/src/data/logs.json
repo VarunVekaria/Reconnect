@@ -189,5 +189,57 @@
       "No medical issue presented."
     ],
     "ts": "2025-09-14T04:08:00.790Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What can i do now",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-14T08:43:33.970Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "I need help",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message is vague and does not indicate a specific medical issue or urgency."
+    ],
+    "ts": "2025-09-14T08:43:42.354Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened on this day?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient is inquiring about a non-medical topic."
+    ],
+    "ts": "2025-09-14T08:43:52.517Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "Where should i go",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-14T08:44:38.139Z"
   }
 ]

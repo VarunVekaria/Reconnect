@@ -82,5 +82,112 @@
     "categories": [],
     "reasons": [],
     "ts": "2025-09-14T01:45:02.283Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "Where should I go?",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-14T03:23:52.286Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Hi, I am Pranika.",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "No medical issue presented."
+    ],
+    "ts": "2025-09-14T03:24:33.960Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "I feel i have fever",
+    "tags": [
+      "medical"
+    ],
+    "severity": "moderate",
+    "categories": [
+      "fever"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-14T03:43:18.336Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "I am feeling tired",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Feeling tired can be a normal response to various factors such as lack of sleep, stress, or physical exertion."
+    ],
+    "ts": "2025-09-14T03:43:34.327Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Just got hurt. what should i do",
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "injury",
+      "pain"
+    ],
+    "reasons": [
+      "The patient has reported getting hurt, which may require immediate medical attention."
+    ],
+    "ts": "2025-09-14T03:44:09.735Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Hi, my name is Pranika.",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "General greeting, no medical concern expressed."
+    ],
+    "ts": "2025-09-14T04:03:58.191Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Hi, I'm Brenna Gough.",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "No specific medical issue mentioned."
+    ],
+    "ts": "2025-09-14T04:07:50.147Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "Hi, I'm Prenika.",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "No medical issue presented."
+    ],
+    "ts": "2025-09-14T04:08:00.790Z"
   }
 ]

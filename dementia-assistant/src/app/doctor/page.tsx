@@ -21,6 +21,7 @@ export default function DoctorPage() {
       {/* Header */}
       <header className="flex items-center justify-between">
         <div>
+          <br></br>
           <h1 className="text-2xl font-semibold">Doctor Mode</h1>
           <p className="text-sm text-gray-600 dark:text-zinc-400">
             Only entries that appear clinically relevant are shown. Urgent issues are listed first.

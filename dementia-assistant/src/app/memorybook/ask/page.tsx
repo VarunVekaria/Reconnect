@@ -26,6 +26,8 @@ export default function AskMemoryPage() {
 
   return (
     <div className="container py-6 space-y-8">
+      <br></br>
+      <br></br>
       <h2 className="text-xl font-semibold">Ask About a Photo</h2>
       <div className="flex gap-2 mb-2">
         <button

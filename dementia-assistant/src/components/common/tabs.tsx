@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export type TabKey = "schedule" | "logs";
+export type TabKey = "schedule" | "logs" | "gallery" ;
 
 export default function Tabs({
   tabs,

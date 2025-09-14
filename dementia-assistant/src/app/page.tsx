@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -16,6 +15,7 @@ type MemoryItem = {
   createdAt?: string;
   type?: "memory" | "person";
 };
+import Link from "next/link";
 
 type VoiceNote = {
   id: string;

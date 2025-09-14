@@ -90,22 +90,6 @@
       "id": "zudxocxq"
     },
     {
-      "title": "Have lunch",
-      "instructions": "Have lunch at home",
-      "dow": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "start": "13:00",
-      "end": "14:23",
-      "id": "0ecl6vzs"
-    },
-    {
       "title": "Sleep",
       "instructions": "Rest for a while",
       "dow": [
@@ -120,6 +104,22 @@
       "start": "01:00",
       "end": "05:00",
       "id": "qe21cfvn"
+    },
+    {
+      "title": "Have lunch",
+      "instructions": "",
+      "dow": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "start": "13:00",
+      "end": "15:00",
+      "id": "cl7ef29y"
     }
   ]
 }

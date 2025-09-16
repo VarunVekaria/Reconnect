@@ -253,5 +253,111 @@
       "General inquiry about breakfast"
     ],
     "ts": "2025-09-14T09:09:19.432Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "Where should I go?",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient is asking for general guidance and does not indicate any medical issue."
+    ],
+    "ts": "2025-09-14T10:36:44.126Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should I do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient is asking for general advice about breakfast."
+    ],
+    "ts": "2025-09-14T10:37:22.179Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "I am not able to breathe",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "breathing"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-14T10:37:34.806Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What happened on 12th September 2025",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:38:17.038Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "chat",
+    "text": "is 4th august imp",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message does not indicate any medical issue or concern."
+    ],
+    "ts": "2025-09-14T10:39:56.007Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12th sept",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "Patient is inquiring about a date with no medical context or concern."
+    ],
+    "ts": "2025-09-14T10:41:55.249Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12th september",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-14T10:45:49.137Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should I do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or need for attention."
+    ],
+    "ts": "2025-09-16T02:16:14.956Z"
   }
 ]

@@ -143,12 +143,12 @@ export default function MemoryPopup({ memory }: { memory?: Memory }) {
           )}
         </div>
 
-        {/* Caption (optional) */}
+        {/* Caption (optional)
         {typeof memory?.caption === "string" && memory.caption.trim() && (
           <p className="mt-4 text-sm leading-relaxed text-gray-700 dark:text-zinc-300">
             {memory.caption}
           </p>
-        )}
+        )} */}
 
         {/* Primary action */}
         <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">

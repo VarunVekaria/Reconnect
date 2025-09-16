@@ -125,9 +125,9 @@ export default function AskMemoryPage() {
             {matchResult.best?.storagePath && (
               <img src={matchResult.best.storagePath} className="w-full max-w-xs rounded-lg border mb-2" alt="best match" />
             )}
-            {matchResult.usedCaption && (
+            {/* {matchResult.usedCaption && (
               <div className="mt-1 text-xs opacity-70">Query caption: {matchResult.usedCaption}</div>
-            )}
+            )} */}
           </div>
         )}
       </div>

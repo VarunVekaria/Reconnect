@@ -256,6 +256,49 @@
   },
   {
     "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/57f1a3cc-3722-4a91-87a5-522c2a6412b7.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:35:37.860Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "is 4 august important",
+    "meta": {
+      "imageUrl": "/memory/dd05e45a-7ff8-4457-b180-2a787a2ca3e3.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:36:06.331Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/57f1a3cc-3722-4a91-87a5-522c2a6412b7.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-14T10:36:32.212Z"
+  },
+  {
+    "patientId": "patient123",
     "type": "nav",
     "text": "Where should I go?",
     "meta": {
@@ -266,9 +309,9 @@
     "severity": "low",
     "categories": [],
     "reasons": [
-      "The patient is asking for general guidance and does not indicate any medical issue."
+      "The patient is asking for directions and does not indicate any medical issue."
     ],
-    "ts": "2025-09-14T10:36:44.126Z"
+    "ts": "2025-09-14T10:50:49.331Z"
   },
   {
     "patientId": "patient123",
@@ -278,14 +321,14 @@
     "severity": "low",
     "categories": [],
     "reasons": [
-      "The patient is asking for general advice about breakfast."
+      "The patient's message does not indicate any medical concern or issue."
     ],
-    "ts": "2025-09-14T10:37:22.179Z"
+    "ts": "2025-09-14T10:50:58.319Z"
   },
   {
     "patientId": "patient123",
     "type": "emergency",
-    "text": "I am not able to breathe",
+    "text": "i am not able to breath at all",
     "meta": {
       "emergencyNotified": true,
       "contactsCount": 1
@@ -298,66 +341,21 @@
       "breathing"
     ],
     "reasons": "Matched medical keywords",
-    "ts": "2025-09-14T10:37:34.806Z"
+    "ts": "2025-09-14T10:51:10.049Z"
   },
   {
     "patientId": "patient123",
     "type": "tool",
-    "text": "What happened on 12th September 2025",
+    "text": "is 4 august important",
+    "meta": {
+      "imageUrl": "/memory/dd05e45a-7ff8-4457-b180-2a787a2ca3e3.jpeg"
+    },
     "tags": [],
     "severity": "low",
     "categories": [],
     "reasons": [
-      "The patient's message does not indicate any medical concern or issue."
+      "The message is about a personal event and does not indicate any medical concern."
     ],
-    "ts": "2025-09-14T10:38:17.038Z"
-  },
-  {
-    "patientId": "patient123",
-    "type": "chat",
-    "text": "is 4th august imp",
-    "tags": [],
-    "severity": "low",
-    "categories": [],
-    "reasons": [
-      "The message does not indicate any medical issue or concern."
-    ],
-    "ts": "2025-09-14T10:39:56.007Z"
-  },
-  {
-    "patientId": "patient123",
-    "type": "tool",
-    "text": "what happened on 12th sept",
-    "tags": [],
-    "severity": "low",
-    "categories": [],
-    "reasons": [
-      "Patient is inquiring about a date with no medical context or concern."
-    ],
-    "ts": "2025-09-14T10:41:55.249Z"
-  },
-  {
-    "patientId": "patient123",
-    "type": "tool",
-    "text": "what happened on 12th september",
-    "tags": [],
-    "severity": "low",
-    "categories": [],
-    "reasons": [
-      "The patient's message does not indicate any medical concern or need for attention."
-    ],
-    "ts": "2025-09-14T10:45:49.137Z"
-  },
-  {
-    "patientId": "patient123",
-    "type": "tool",
-    "text": "What should I do now?",
-    "tags": [],
-    "severity": "low",
-    "categories": [],
-    "reasons": [
-      "The patient's message does not indicate any medical concern or need for attention."
-    ],
-    "ts": "2025-09-16T02:16:14.956Z"
+    "ts": "2025-09-14T10:52:00.667Z"
   }
 ]

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const nav = [
-  { href: "/memorybook/ask", label: "Ask" },
+  { href: "/memorybook/ask", label: "Relive" },
   { href: "/memorypopup", label: "Reconnect" },
-  { href: "/bot", label: "Bot" },
+  { href: "/bot", label: "Ask" },
 ];
 
 export default function FooterNav() {

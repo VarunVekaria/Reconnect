@@ -253,5 +253,109 @@
       "General inquiry about breakfast"
     ],
     "ts": "2025-09-14T09:09:19.432Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/57f1a3cc-3722-4a91-87a5-522c2a6412b7.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:35:37.860Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "is 4 august important",
+    "meta": {
+      "imageUrl": "/memory/dd05e45a-7ff8-4457-b180-2a787a2ca3e3.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:36:06.331Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "what happened on 12 september 2025",
+    "meta": {
+      "imageUrl": "/memory/57f1a3cc-3722-4a91-87a5-522c2a6412b7.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [],
+    "ts": "2025-09-14T10:36:32.212Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "nav",
+    "text": "Where should I go?",
+    "meta": {
+      "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=40.785091,-73.968285&travelmode=walking&dir_action=navigate&destination_name=Home",
+      "label": "Home"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient is asking for directions and does not indicate any medical issue."
+    ],
+    "ts": "2025-09-14T10:50:49.331Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "What should I do now?",
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The patient's message does not indicate any medical concern or issue."
+    ],
+    "ts": "2025-09-14T10:50:58.319Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "emergency",
+    "text": "i am not able to breath at all",
+    "meta": {
+      "emergencyNotified": true,
+      "contactsCount": 1
+    },
+    "tags": [
+      "medical"
+    ],
+    "severity": "urgent",
+    "categories": [
+      "breathing"
+    ],
+    "reasons": "Matched medical keywords",
+    "ts": "2025-09-14T10:51:10.049Z"
+  },
+  {
+    "patientId": "patient123",
+    "type": "tool",
+    "text": "is 4 august important",
+    "meta": {
+      "imageUrl": "/memory/dd05e45a-7ff8-4457-b180-2a787a2ca3e3.jpeg"
+    },
+    "tags": [],
+    "severity": "low",
+    "categories": [],
+    "reasons": [
+      "The message is about a personal event and does not indicate any medical concern."
+    ],
+    "ts": "2025-09-14T10:52:00.667Z"
   }
 ]

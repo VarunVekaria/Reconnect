@@ -1,4 +1,4 @@
-# 🧠 Dementia Assistant – MemoryBook Prototype
+# 🧠 Dementia Assistant – MemoryBook
 
 [![Next.js](https://img.shields.io/badge/Next.js-13+-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A calm, image-driven memory aid and caregiver communication tool for dementia patients.  
-This prototype helps patients revisit key moments via photos and lets caregivers leave contextual **voice notes** to guide memory and interaction.
+The app helps patients revisit key moments via photos and lets caregivers/family members leave contextual **voice notes** to guide memory and interaction.
 
 ⚡ Built with **Next.js App Router, TypeScript, Tailwind, and local JSON APIs**.  
 Ideal for **offline-first deployment** or as a proof-of-concept for scaling to cloud infrastructure.

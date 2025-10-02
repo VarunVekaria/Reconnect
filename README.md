@@ -29,5 +29,5 @@ Ideal for **offline-first deployment** or as a proof-of-concept for scaling to c
 ### 1. Clone the Repo
 
 ```bash
-[git clone https://github.com/your-username/dementia-assistant.git](https://github.com/VarunVekaria/Reconnect.git)
+https://github.com/VarunVekaria/Reconnect.git
 cd dementia-assistant
